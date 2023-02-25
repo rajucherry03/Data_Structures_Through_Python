@@ -1,0 +1,41 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Stack_ADT:
+    def __init__(self):
+        self.head=None
+        self.top=None
+    def pushEle(self,data):
+        newnode=Node(data)
+        if (self.head==None):
+            self.head=newnode
+            self.top=self.head
+        else:
+            newnode.next=self.top
+            self.top=newnode
+    def display(self):
+        temp=self.top
+        if temp==None:
+            print("Stack is empty")
+        else:
+            while temp!=None:
+                print(temp.data,"->",end="")
+                temp=temp.next
+            print("NULL")
+    def popEle(self):
+        temp=self.top
+        self.top=temp.next
+        temp.next=None
+        del temp
+
+
+s=Stack_ADT()
+s.pushEle(10)
+s.pushEle(20)
+s.pushEle(30)
+s.display()
+s.popEle()
+s.popEle()
+s.display()
+            
