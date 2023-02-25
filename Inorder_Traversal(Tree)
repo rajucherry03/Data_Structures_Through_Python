@@ -1,0 +1,34 @@
+class Conversion:
+    def __init__(self,data):
+        self.left=None
+        self.right=None
+        self.data=data
+        self.listt=list()
+    def insert(self,data):
+        if self.data:
+            if data<self.data:
+                if self.left is None:
+                    self.left=Conversion(data)
+                else:
+                    self.left.insert(data)
+            elif data>self.data:
+                if self.right is None:
+                    self.right=Conversion(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data=data
+    def inorder(self,root):
+        if root!=None:
+            self.inorder(root.left)
+            print(root.data)
+            self.listt.append(root.data)
+            self.inorder(root.right)
+        return self.listt
+root=Conversion(50)
+root.insert(3)
+root.insert(15)
+root.insert(56)
+root.insert(34)
+root.insert(67)
+print(root.inorder(root))
