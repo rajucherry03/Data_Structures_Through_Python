@@ -1,0 +1,44 @@
+class map:
+    def __inint__(self):
+        self.maplist=List()
+    def __len__(self):
+            return(len(self.maplist))
+    def add(self,key,value):
+        index=self.findpost(key)
+        if(index!=-1):
+                self.maplist[index].value=value
+                print("update")
+        else:
+                entry=mapentry(key,value)
+                self.maplist=append(entry)
+                print("New Entry")
+    def findpost(self,key):
+        for i in range(len(self.maplist)):
+            if(self.maplist[i].key==key):
+                return i
+            else:
+                return -1
+    def remove(self,key):
+        index=self.findpost(key)
+        if(index!=-1):
+            self.maplist.pop(index)
+            print("deleted")
+
+        else:
+            print("Not Exist")
+class mapentry:
+    def __init__(self,key,value):
+        self.key=key
+        self.value=value
+
+obj=map()
+print(len(obj))
+obj.add(101,"MITS")
+obj.add(102,"AP")
+obj.add(102,"Andhra")
+obj.remove(102)
+obj.remove(105)
+obj.add(103,"Raju")
+print(obj.valueOf(105))
+         
+                
