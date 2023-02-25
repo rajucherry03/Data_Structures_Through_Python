@@ -1,0 +1,26 @@
+from collections import defaultdict
+class DFTraversal:
+    def __init__(self):
+        self.graph=defaultdict(list)
+        self.visited=[]
+    def addEdge(self,u,v):
+        self.graph[u].append(v)
+    def DFT(self,node):
+        
+        if node not in self.visited:
+              print(node,end=' ')
+              self.visited.append(node)
+              for i in self.graph[node]:
+                  self.DFT(i)
+        
+
+root=DFTraversal()
+root.addEdge(0,1)
+root.addEdge(0,2)
+root.addEdge(1,2)
+root.addEdge(2,0)
+root.addEdge(2,3)
+root.addEdge(3,3)
+print("Following is Breadth first traversal from l")
+root.DFT(2)
+ 
