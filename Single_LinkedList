@@ -1,0 +1,76 @@
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+
+class LinkedList:
+    def __init__(self):
+        self.head=None
+    def createItem(self,data):
+        newnode=Node(data)
+        if (self.head==None):
+            self.head=newnode
+            self.temp=self.head
+        else:
+           
+            self.temp.next=newnode
+            self.temp=newnode
+
+    def display(self):
+        self.temp=self.head
+        while self.temp!=None:
+            print(self.temp.data)
+            self.temp=self.temp.next
+    def insertAtBig(self,data):
+        newnode=Node(data)
+        if self.head==None:
+            self.head=newnode
+            self.temp=self.head
+        else:
+            self.temp=self.head
+            self.head=newnode
+            self.head.next=self.temp
+    def insertAtEnd(self,data):
+        newnode=Node(data)
+        if self.head==None :
+            self.head=newnode
+            self.temp=self.head
+        else:
+            self.temp=self.head
+            while self.temp.next != None:
+                self.temp=self.temp.next
+            self.temp.next=newnode
+    def deleteAtBig(self):
+        if self.head==None:
+            print("Linked List is Empty")
+        else:
+            self.temp=self.head
+            self.head=self.temp.next
+    def deleteAtEnd(self):
+        if self.head==None:
+            print("Linked List is empty")
+        else:
+            self.temp=self.head
+            while self.temp!=None:
+                self.temp=self.temp.next
+
+            
+
+
+
+ob=LinkedList()
+ob.insertAtBig(20)
+ob.createItem(5)
+ob.createItem(2)
+ob.createItem(3)
+ob.insertAtEnd(2)
+ob.insertAtBig(400)
+ob.insertAtEnd(490)
+ob.insertAtEnd(11)
+ob.deleteAtBig()
+ob.deleteAtBig()
+ob.deleteAtEnd()
+ob.display()
+Linked_List.py
+Displaying Linked_List.py.
