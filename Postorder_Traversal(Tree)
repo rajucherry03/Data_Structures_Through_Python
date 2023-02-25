@@ -1,0 +1,38 @@
+class Conversion:
+    def __init__(self,data):
+        self.left=None
+        self.right=None
+        self.data=data
+
+    def insert(self,data):
+        if self.data:
+            if data<self.data:
+                if self.left is None:
+                    self.left=Conversion(data)
+                else:
+                    self.left.insert(data)
+            elif data>self.data:
+                if self.right is None:
+                    self.right=Conversion(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data=data
+    def postorder(self,root):
+        if root!=None:
+            
+            self.postorder(root.left)
+            self.postorder(root.right)
+            print(root.data,end=" ")
+        
+
+    
+root=Conversion("A")
+root.insert("A")
+root.insert("B")
+root.insert("D")
+root.insert("E")
+root.insert("F")
+root.insert("G")
+root.postorder(root)
+
