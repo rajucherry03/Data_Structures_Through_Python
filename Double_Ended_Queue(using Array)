@@ -1,0 +1,42 @@
+class Deque: 
+    def __init__(self): 
+        self.deque = [] 
+        self.size = 0 
+ 
+    def add_front(self, data): 
+        self.deque.insert(0, data) 
+        self.size += 1 
+    def add_last(self, data): 
+        self.deque.append(data) 
+        self.size += 1 
+    def remove_front(self): 
+        self.deque.pop(0) 
+        self.size -= 1  
+    def remove_last(self): 
+        self.deque.pop() 
+        self.size -= 1 
+    def front(self): 
+        return self.deque[0] 
+    def rear(self): 
+        return self.deque[-1] 
+    def __len__(self): 
+        return self.size 
+    def __str__(self): 
+        if self.size == 0: 
+            return "deque is empty" 
+        result = "" 
+        for i in range(self.size): 
+            result += str(self.deque[i]) + "<--" 
+        return result 
+
+
+l=Deque() 
+l.add_front(4) 
+l.add_last(8) 
+l.add_front(5) 
+l.add_last(7) 
+l.add_front(6) 
+l.add_front(10)
+l.add_last(6) 
+print(l) 
+print(len(l))
