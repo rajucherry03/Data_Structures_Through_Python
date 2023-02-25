@@ -1,0 +1,12 @@
+def ins(arr):
+    for i in range(len(arr)):
+        key=arr[i]
+        j=i-1
+        while key<arr[j] and j>=0:
+            arr[j+1]=arr[j]
+            j=j-1
+        arr[j+1]=key
+
+arr=[10,2,0,3,40,78,1,2,3]
+ins(arr)
+print(arr)
