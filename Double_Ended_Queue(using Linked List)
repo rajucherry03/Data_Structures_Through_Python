@@ -1,0 +1,98 @@
+class Error(Exception): 
+    pass 
+class UnderflowError(Error): 
+    def __init__(self, message): 
+        self.message = message 
+class OverflowError(Error): 
+    def __init__(self, message): 
+        self.message = message 
+ 
+class DoublyLinked: 
+    class Node: 
+        __slots__ = 'element', 'next', 'previous' 
+        def __init__(self, _element = None, _next = None, _previous = None): 
+            self.element = _element 
+            self.next = _next 
+            self.previous = _previous 
+ 
+    def __init__(self): 
+        self._head = self.Node() 
+        self._tail = self.Node() 
+        self.size = 0 
+    def insert_first(self, element): 
+        if self.size == 0: 
+            new = self.Node(element, None, None) 
+            self._tail = self._head 
+            self.size += 1 
+            new = self.Node(element, self._head, None) 
+            self._head.previous = new 
+            self._head = new 
+            return new 
+    def insert_last(self, element): 
+        if self.size == 0: 
+            new = self.Node(element, None, None) 
+            self.size += 1 
+            new = self.Node(element, None, self._tail) 
+            self._tail.next = new 
+            self._tail = new 
+    def delete_first(self): 
+        if self.size == 0: 
+            raise UnderflowError('List is empty!') 
+        value = self._head.element 
+        if self.size == 1: 
+            self._head = None 
+            self.tail = None 
+        else: 
+            self._head = self._head.next 
+            self._head.previous = None 
+        self.size -= 1 
+        return value 
+    def delete_last(self): 
+        if self.size == 0: 
+            raise UnderflowError('List is empty!') 
+            value = self._tail.element 
+        if self.size == 1: 
+            self._head = None 
+            self.tail = None 
+        else: 
+            self._tail= self._tail.previous 
+            self._tail.next = None 
+        self.size -= 1 
+        return value 
+    def get_size(self): 
+        return self.size 
+class LinkedDequeue(DoublyLinked): 
+    def __init__(self): 
+        super().__init__() 
+    def dequeue_size(self): 
+        size = self.get_size() 
+        return size 
+    def enqueue_first(self, element): 
+ 
+        self.insert_first(element) 
+    def enqueue_last(self, element): 
+ 
+        self.insert_last(element) 
+    def dequeue_first(self): 
+  
+        element = self.delete_first() 
+        return element 
+    def dequeue_last(self): 
+  
+        element = self.delete_last() 
+        return element 
+    def top(self): 
+ 
+        element = self._head.element 
+        return element 
+ 
+if __name__ == '__main__':
+    d= LinkedDequeue() 
+    d.insert_first(10) 
+    d.insert_last(5) 
+    d.insert_last(6) 
+    d.insert_first(11) 
+    print(d.dequeue_size()) 
+    print(d.dequeue_first()) 
+    print(d.delete_last()) 
+    print(d.top())
